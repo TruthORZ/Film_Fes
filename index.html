@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>电影节名称 | Film Festival</title>
+    <title> Sci-fi Film Festival</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .hero-bg {
@@ -11,21 +11,33 @@
             background-size: cover;
             background-position: center;
         }
+        .intro-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('intro-bg.jpg'); /* 你可以上传一张新图叫 intro-bg.jpg */
+            background-size: cover;
+            background-position: center;
+        }
     </style>
 </head>
 <body class="bg-black text-white font-sans">
 
-    <header class="hero-bg h-screen flex flex-col justify-center items-center text-center px-4">
-        <h1 class="text-6xl md:text-8xl font-bold mb-4 tracking-tighter">Sci-fi Film Festival: Everyone is a Universe</h1>
-        <p class="text-xl md:text-2xl text-gray-300 italic mb-8">"We look to the stars, only to find ourselves."</p>
-        <div class="max-w-2xl bg-black/40 p-6 rounded-lg backdrop-blur-sm">
-            <p class="text-lg leading-relaxed">
-                For centuries, humanity has looked beyond the Earth, searching for signs of life in the vast unknown. But what if this search has never truly been about “them”?<br>
-                From distant planets to incomprehensible signals, science fiction cinema repeatedly returns to a central question: what do we see when we encounter the alien?<br>
-                Across five films, we invite you to look into the unknown—not to find answers, but to encounter reflections of memory, longing, belief, and the fragile limits of what it means to be human.
-            </p>
-        </div>
+    <header class="hero-bg h-[70vh] flex flex-col justify-center items-center text-center px-4">
+        <h1 class="text-6xl md:text-8xl font-bold mb-4 tracking-tighter text-white" style="text-shadow: 6px 6px 0px #FFDC33;">Sci-fi Film Festival: Everyone is a Universe</h1>
+        <p class="text-xl md:text-2xl text-gray-300 italic">"We look to the stars, only to find ourselves."</p>
     </header>
+    
+    <section class="intro-bg py-24 px-4 border-y border-zinc-800">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-yellow-400 text-sm tracking-[0.2em] uppercase mb-6">关于电影节 / About</h2>
+            <div class="text-xl md:text-2xl leading-relaxed text-gray-100 space-y-6">
+                <p>面对纷繁的世界，我们为何需要电影？</p>
+                <p class="text-gray-400 text-lg">简要回答：为了看见未曾抵达的远方。</p>
+                <p class="pt-4 font-light italic border-t border-zinc-700 w-1/2 mx-auto">
+                    <strong>本次电影节目的：</strong><br>
+                    链接独立影像与大众，在光影中寻找共鸣。
+                </p>
+            </div>
+        </div>
+    </section>
 
     <section class="py-20 px-4 max-w-6xl mx-auto">
         <h2 class="text-4xl font-bold mb-12 text-center border-b border-gray-800 pb-4">Selections</h2>
