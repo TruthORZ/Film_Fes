@@ -8,38 +8,28 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* ====================================================
-        🎨 颜色控制面板 (你的修改接口)
-        你可以把这里的十六进制颜色码换成你喜欢的任何颜色
-        ====================================================
+        /* 🎨 颜色控制面板：
+        因为我们已经全屏使用背景图，所以我帮你去掉了背景色的变量，只保留了标题颜色的接口。
         */
         :root {
-            /* --- 1. About (简介) 版块 --- */
-            --about-bg-color: #18181b;     /* 背景颜色 (默认深灰: #18181b) */
-            --about-title-color: #FFC10B;  /* 标题颜色 (默认纯白: #ffffff) */
-
-            /* --- 2. Selections (选片) 版块 --- */
-            --selections-bg-color: #18181b;    /* 背景颜色 (默认纯黑: #000000) */
-            --selections-title-color: #FFC10B; /* 标题颜色 (默认纯白: #ffffff) */
-
-            /* --- 3. Trailer (预告片) 版块 --- */
-            --trailer-bg-color: #18181b;     /* 背景颜色 (默认深灰: #18181b) */
-            --trailer-title-color: #FFC10B;  /* 标题颜色 (默认纯白: #ffffff) */
+            --about-title-color: #FFC10B; 
+            --selections-title-color: #FFC10B; 
+            --trailer-title-color: #FFC10B; 
         }
 
-        /* 封面图样式 */
+        /* 1. 封面图样式 */
         .hero-bg {
             background-image: linear-gradient(rgba(0,10,30,0.3), rgba(0,10,30,0.7)), url('bg.png');
             background-size: cover;
             background-position: center;
         }
 
-        /* 2. 下方内容区的通用背景（带有科幻蓝滤镜和固定视差效果） */
+        /* 2. 下方内容区的通用背景 */
         .content-bg {
-            background-image: linear-gradient(rgba(0,10,30,0.7), rgba(0,10,30,0.7)), url('pure-bg.png'); /* 填你准备好的 1920x1080 背景图 */
+            background-image: linear-gradient(rgba(0,10,30,0.7), rgba(0,10,30,0.7)), url('pure-bg.png');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* 重点：让背景固定不随页面滚动 */
+            background-attachment: fixed; /* 背景固定视差效果 */
         }
     </style>
 </head>
@@ -56,62 +46,44 @@
     <main class="content-bg">
 
         <section class="py-20">
-            ...
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold mb-12 text-center border-b border-gray-800 pb-4" style="color: var(--about-title-color);">About</h2>
+                <div class="text-xl md:text-2xl leading-relaxed text-gray-100 space-y-6">
+                    <p>For centuries, humanity has looked beyond the Earth, searching for signs of life in the vast unknown. But what if this search has never truly been about “them”?</p>
+                    <p>From distant planets to incomprehensible signals, science fiction cinema repeatedly returns to a central question: what do we see when we encounter the alien?</p>
+                    <p>Across five films, we invite you to look into the unknown—not to find answers, but to encounter reflections of memory, longing, belief, and the fragile limits of what it means to be human.</p>
+                </div>
+            </div>
         </section>
 
         <section class="py-20">
-            ...
+            <div class="max-w-6xl mx-auto px-4">
+                <h2 class="text-4xl font-bold mb-12 text-center border-b border-gray-800 pb-4" style="color: var(--selections-title-color);">Selections</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="group">
+                        <div class="overflow-hidden rounded-lg bg-gray-900 aspect-[2/3] mb-4">
+                            <img src="https://via.placeholder.com/400x600" alt="电影海报" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">电影名称 01</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">这里是关于这部电影的简要介绍，描述它的风格、导演以及它为何触动人心。</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="py-20">
-            ...
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-4xl font-bold mb-10 text-center border-b border-gray-800 pb-4" style="color: var(--trailer-title-color);">Trailer</h2>
+                <div class="aspect-video rounded-xl overflow-hidden shadow-2xl">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
         </section>
 
-        <footer class="py-10 ...">
-            ...
+        <footer class="py-10 text-center text-gray-500 text-sm">
+            &copy; 2026 CHAORAN XIA. All Rights Reserved.
         </footer>
 
     </main>
     </body>
-    
-    <section class="py-20">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-12 text-center border-b border-gray-800 pb-4" style="color: var(--about-title-color);">About</h2>
-            <div class="text-xl md:text-2xl leading-relaxed text-gray-100 space-y-6">
-                <p>For centuries, humanity has looked beyond the Earth, searching for signs of life in the vast unknown. But what if this search has never truly been about “them”?</p>
-                <p>From distant planets to incomprehensible signals, science fiction cinema repeatedly returns to a central question: what do we see when we encounter the alien?</p>
-                <p>Across five films, we invite you to look into the unknown—not to find answers, but to encounter reflections of memory, longing, belief, and the fragile limits of what it means to be human.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 text-center border-b border-gray-800 pb-4" style="color: var(--selections-title-color);">Selections</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="group">
-                    <div class="overflow-hidden rounded-lg bg-gray-900 aspect-[2/3] mb-4">
-                        <img src="https://via.placeholder.com/400x600" alt="电影海报" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">电影名称 01</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">这里是关于这部电影的简要介绍，描述它的风格、导演以及它为何触动人心。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-10 text-center border-b border-gray-800 pb-4" style="color: var(--trailer-title-color);">Trailer</h2>
-            <div class="aspect-video rounded-xl overflow-hidden shadow-2xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-10 text-center text-gray-500 text-sm" style="background-color: var(--selections-bg-color);">
-        &copy; 2026 CHAORAN XIA. All Rights Reserved.
-    </footer>
-
-</body>
 </html>
