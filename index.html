@@ -7,50 +7,54 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <style>
-        /* 🎨 颜色控制面板：
-        因为我们已经全屏使用背景图，所以我帮你去掉了背景色的变量，只保留了标题颜色的接口。
-        */
-       :root {
+        :root {
             --about-title-color: #FFC10B; 
             --selections-title-color: #FFC10B; 
             --trailer-title-color: #FFC10B; 
-            
-            /* --- 🎨 新增：Tagline 底部距离接口 --- */
-            /* 数值越小，越贴近屏幕最底部。你可以随意改成 5%、15% 甚至 50px */
             --tagline-bottom: 10%; 
         }
 
-        /* 1. 封面图样式 */
         .hero-bg {
             background-image: linear-gradient(rgba(0,10,30,0.3), rgba(0,10,30,0.7)), url('bg.png');
             background-size: cover;
             background-position: center;
         }
 
-        /* 2. 下方内容区的通用背景 */
         .content-bg {
             background-image: linear-gradient(rgba(0,10,30,0.7), rgba(0,10,30,0.7)), url('pure-bg.png');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* 背景固定视差效果 */
+            background-attachment: fixed; 
+        }
+
+        /* --- 🎬 新增：轮播图的自定义缩放与透明度样式 --- */
+        .swiper-slide {
+            width: 300px; /* 手机端卡片宽度 */
+            opacity: 0.4; /* 非中间卡片的透明度 */
+            transition: opacity 0.5s ease;
+        }
+        @media (min-width: 768px) {
+            .swiper-slide { width: 400px; } /* 电脑端卡片宽度 */
+        }
+        .swiper-slide-active {
+            opacity: 1; /* 中间处于激活状态的卡片完全不透明 */
         }
     </style>
 </head>
 <body class="bg-black text-white font-sans">
 
     <header class="hero-bg h-screen relative flex flex-col justify-center items-center text-center px-4">
-        
-        <h1 class="text-6xl md:text-8xl font-black mb-12 tracking-wider text-[#FFC10B] leading-[1.4]" 
-            style="text-shadow: -7px -2px 0px #FFFFFF;">
+        <h1 class="text-6xl md:text-8xl font-black mb-12 tracking-wider text-[#FFC10B] leading-[1.2]" 
+            style="text-shadow: 7px 3px 0px #FFFFFF;">
             Sci-fi Film Festival:<br>Everyone is a Universe
         </h1>
-        
         <p class="absolute w-full text-center text-xl md:text-2xl text-gray-300 italic" 
            style="bottom: var(--tagline-bottom);">
             "We look to the stars, only to find ourselves."
         </p>
-
     </header>
 
     <main class="content-bg">
@@ -66,16 +70,58 @@
             </div>
         </section>
 
-        <section class="py-20">
-            <div class="max-w-6xl mx-auto px-4">
-                <h2 class="text-4xl font-bold mb-12 text-center border-b border-gray-800 pb-4" style="color: var(--selections-title-color);">Selections</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div class="group">
-                        <div class="overflow-hidden rounded-lg bg-gray-900 aspect-[2/3] mb-4">
-                            <img src="https://via.placeholder.com/400x600" alt="电影海报" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <section class="py-20 overflow-hidden">
+            <div class="w-full mx-auto">
+                <h2 class="text-4xl font-bold mb-12 text-center border-b border-gray-800 pb-4 max-w-6xl mx-auto px-4" style="color: var(--selections-title-color);">Selections</h2>
+                
+                <div class="swiper mySwiper w-full py-10">
+                    <div class="swiper-wrapper">
+                        
+                        <div class="swiper-slide group cursor-grab active:cursor-grabbing">
+                            <div class="overflow-hidden rounded-lg bg-gray-900 aspect-[2/3] mb-4 shadow-2xl">
+                                <img src="https://via.placeholder.com/400x600?text=Solaris" alt="Solaris 海报" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-2xl font-bold mb-1">Solaris (1972) [cite: 20]</h3>
+                            <p class="text-[#FFC10B] text-sm mb-3">Dir. Andrei Tarkovsky [cite: 21]</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">A psychologist is sent to a space station orbiting the mysterious planet Solaris, where crew members begin encountering physical manifestations of their memories[cite: 22]. As the boundary between reality and memory dissolves, the mission becomes increasingly difficult to bear[cite: 23]. Here, the encounter with an alien intelligence unfolds as a confrontation with the past, where what appears external is deeply personal[cite: 24].</p>
                         </div>
-                        <h3 class="text-2xl font-bold mb-2">电影名称 01</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">这里是关于这部电影的简要介绍，描述它的风格、导演以及它为何触动人心。</p>
+
+                        <div class="swiper-slide group cursor-grab active:cursor-grabbing">
+                            <div class="overflow-hidden rounded-lg bg-gray-900 aspect-[2/3] mb-4 shadow-2xl">
+                                <img src="https://via.placeholder.com/400x600?text=Contact" alt="Contact 海报" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-2xl font-bold mb-1">Contact (1997) [cite: 25]</h3>
+                            <p class="text-[#FFC10B] text-sm mb-3">Dir. Robert Zemeckis [cite: 26]</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">A scientist dedicated to the search for extraterrestrial intelligence receives a signal that appears to originate from an alien civilization[cite: 27]. As she works to interpret it, questions of evidence, belief, and trust come to the forefront[cite: 28]. The film explores how the desire to reach beyond Earth is shaped not only by scientific curiosity, but also by deeply held convictions about truth and existence[cite: 29].</p>
+                        </div>
+
+                        <div class="swiper-slide group cursor-grab active:cursor-grabbing">
+                            <div class="overflow-hidden rounded-lg bg-gray-900 aspect-[2/3] mb-4 shadow-2xl">
+                                <img src="https://via.placeholder.com/400x600?text=Arrival" alt="Arrival 海报" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-2xl font-bold mb-1">Arrival (2016) [cite: 30]</h3>
+                            <p class="text-[#FFC10B] text-sm mb-3">Dir. Denis Villeneuve [cite: 31]</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">When mysterious spacecraft appear around the world, a linguist is recruited to communicate with their inhabitants[cite: 32]. As she begins to understand their language, her perception of time and experience gradually shifts[cite: 33]. In this process of communication, the unknown becomes a way of rethinking memory, choice, and what it means to understand one’s own life[cite: 34].</p>
+                        </div>
+
+                        <div class="swiper-slide group cursor-grab active:cursor-grabbing">
+                            <div class="overflow-hidden rounded-lg bg-gray-900 aspect-[2/3] mb-4 shadow-2xl">
+                                <img src="https://via.placeholder.com/400x600?text=Ad+Astra" alt="Ad Astra 海报" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-2xl font-bold mb-1">Ad Astra (2019) [cite: 35]</h3>
+                            <p class="text-[#FFC10B] text-sm mb-3">Dir. James Gray [cite: 36]</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">An astronaut travels across the solar system in search of his missing father, whose work may be linked to a series of unexplained cosmic events[cite: 37]. The journey takes him further from Earth, but also deeper into his own emotional isolation[cite: 38]. As the distance from home grows, the film reflects on connection, absence, and the human need for meaning beyond the vastness of space[cite: 39].</p>
+                        </div>
+
+                        <div class="swiper-slide group cursor-grab active:cursor-grabbing">
+                            <div class="overflow-hidden rounded-lg bg-gray-900 aspect-[2/3] mb-4 shadow-2xl">
+                                <img src="https://via.placeholder.com/400x600?text=Journey+to+the+West" alt="Journey to the West 海报" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-2xl font-bold mb-1">Journey to the West (2023) [cite: 40]</h3>
+                            <p class="text-[#FFC10B] text-sm mb-3">Dir. Kong Dashan [cite: 41]</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">A small magazine devoted to extraterrestrial research sets out on a journey in search of alien life[cite: 42]. What begins as a fanatical investigation gradually turns into something more uncertain, shaped by coincidence, belief, and miracle[cite: 43]. In its quiet and often humorous way, the film suggests that the mystery of the universe is the mystery of life, and the answer to the universe is the answer to life[cite: 44].</p>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -95,5 +141,24 @@
         </footer>
 
     </main>
-    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",   /* 开启封面流效果 */
+            grabCursor: true,      /* 鼠标悬停显示抓取手势 */
+            centeredSlides: true,  /* 核心：将激活的卡片居中 */
+            slidesPerView: "auto", /* 自动计算屏幕能显示几张卡片 */
+            loop: true,            /* 核心：开启无限循环模式 */
+            coverflowEffect: {
+                rotate: 0,         /* 设置为 0，卡片不发生 3D 旋转 */
+                stretch: -30,      /* 调整卡片之间的间距重叠度 */
+                depth: 300,        /* 核心：Z轴深度，数值越大，两边的卡片被缩得越小 */
+                modifier: 1,       /* 效果乘数 */
+                slideShadows: false, /* 关闭默认阴影以免变黑 */
+            },
+        });
+    </script>
+</body>
 </html>
