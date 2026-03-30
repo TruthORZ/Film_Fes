@@ -110,9 +110,18 @@
 
         <section id="trailer" class="py-20">
             <div class="max-w-4xl mx-auto px-4">
-                <h2 class="text-4xl font-bold mb-10 text-center border-b border-gray-800 pb-4" style="color: var(--trailer-title-color);">TRAILER</h2>
-                <div class="aspect-video rounded-xl overflow-hidden shadow-2xl">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                <h2 class="text-4xl font-bold mb-10 text-center border-b border-gray-800 pb-4" style="color: var(--trailer-title-color);">Trailer</h2>
+        
+                <div class="aspect-video rounded-xl overflow-hidden shadow-2xl bg-black">
+                    <video 
+                        controls 
+                        class="w-full h-full object-cover"
+                        poster="你的封面图链接.jpg" 
+                        playsinline
+                    >
+                        <source src="https://res.cloudinary.com/dexfqvexf/video/upload/v1774849397/trailer_csrygr.mov">
+                        您的浏览器不支持视频播放。
+                    </video>
                 </div>
             </div>
         </section>
