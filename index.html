@@ -20,10 +20,9 @@
             --trailer-title-color: #FFC10B; 
             --tagline-bottom: 8%; 
             
-            /* --- 🔠 新增：字体控制接口 --- */
-            /* 想要改字体？只需把 'Orbitron' 换成你想要的字体名称即可 */
-            --title-font: 'Orbitron', sans-serif;         /* 控制所有大标题的字体 */
-            --nav-font: 'Space Grotesk', sans-serif;      /* 控制导航栏的字体 */
+            /* --- 🔠 字体控制接口 --- */
+            --title-font: 'Orbitron', sans-serif;
+            --nav-font: 'Space Grotesk', sans-serif;
         }
 
         /* 强制所有标题 (h1, h2, h3) 应用你的标题字体 */
@@ -49,20 +48,31 @@
             background-attachment: fixed; 
         }
 
-        .swiper-slide {
-            width: 300px; 
+        /* 🌟 修改点 1：只针对选片轮播图 (mySwiper) 限制宽度和透明度 */
+        .mySwiper .swiper-slide {
+            width: 300px;
             opacity: 0.4; 
             transition: opacity 0.5s ease;
         }
         @media (min-width: 768px) {
-            .swiper-slide { width: 400px; } 
+            .mySwiper .swiper-slide { width: 400px; } 
         }
-        .swiper-slide-active {
-            opacity: 1; 
+        .mySwiper .swiper-slide-active {
+            opacity: 1;
+        }
+
+        /* 🌟 修改点 2：确保 About 垂直轮播图 (aboutSwiper) 占满全宽且内容居中 */
+        .aboutSwiper .swiper-slide {
+            width: 100% !important;
+            opacity: 1 !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         
         section[id] {
-            scroll-margin-top: 70px; 
+            scroll-margin-top: 70px;
         }
     </style>
 </head>
@@ -70,17 +80,14 @@
 
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-sm z-50 border-b border-zinc-800 nav-text-style">
         <div class="w-full px-36 md:px-72 h-16 flex justify-between items-center">
-            
             <div class="text-[#FFC10B] font-bold text-2xl tracking-widest uppercase cursor-default">
                 Sci-fi Film Festival
             </div>
-            
             <div class="flex space-x-6 md:space-x-8 text-2xl font-bold">
                 <a href="#about" class="text-gray-300 hover:text-white transition">About</a>
                 <a href="#trailer" class="text-gray-300 hover:text-white transition">Trailer</a>
                 <a href="#selections" class="text-gray-300 hover:text-white transition">Selections</a>
             </div>
-            
         </div>
     </nav>
 
@@ -98,7 +105,7 @@
     <main class="content-bg">
 
         <section id="about" class="py-20">
-            <div class="max-w-5xl mx-auto px-4 text-center">
+            <div class="max-w-6xl mx-auto px-4 text-center">
                 <h2 class="text-4xl font-bold mb-8 text-center border-b border-gray-800 pb-4" style="color: var(--about-title-color);">ABOUT</h2>
                 
                 <div class="swiper aboutSwiper w-full h-[650px] relative px-4">
@@ -111,48 +118,75 @@
 
                     <div class="swiper-wrapper py-14">
                         
-                        <div class="swiper-slide flex flex-col justify-start items-center">
-                            <div class="text-xl md:text-2xl leading-relaxed text-gray-100 mb-6 max-w-3xl">
-                                <p>For centuries, humanity has looked beyond the Earth, searching for signs of life in the vast unknown.<br>But what if this search has never truly been about “them”?<br>What are we really looking for when we look for others?</p>
-                            </div>
-                            <div class="w-full max-w-3xl aspect-video rounded-xl overflow-hidden shadow-2xl">
-                                <img src="about-img-1.webp" alt="About Image 1" class="w-full h-full object-cover bg-gray-800">
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide flex flex-col justify-start items-center">
-                            <div class="text-xl md:text-2xl leading-relaxed text-gray-100 mb-6 max-w-3xl">
-                                <p>We begin with questions, signals, and the hope that the universe can be understood.<br>Between science and belief, the search becomes not only about discovery, but about what we choose to trust.</p>
-                            </div>
-                            <div class="w-full max-w-3xl aspect-video rounded-xl overflow-hidden shadow-2xl">
-                                <img src="about-img-2.webp" alt="About Image 2" class="w-full h-full object-cover bg-gray-800">
+                        <div class="swiper-slide px-4">
+                            <div class="flex flex-col md:flex-row items-center justify-center gap-10 max-w-6xl w-full">
+                                <div class="text-left md:w-1/2 space-y-4">
+                                    <p class="text-xl md:text-2xl leading-relaxed text-gray-100">
+                                        For centuries, humanity has looked beyond the Earth, searching for signs of life in the vast unknown.<br>
+                                        But what if this search has never truly been about “them”?<br>
+                                        What are we really looking for when we look for others?
+                                    </p>
+                                </div>
+                                <div class="md:w-1/2 w-full aspect-video rounded-xl overflow-hidden shadow-2xl border border-zinc-800">
+                                    <img src="about-img-1.webp" alt="About Image 1" class="w-full h-full object-cover bg-gray-800">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="swiper-slide flex flex-col justify-start items-center">
-                            <div class="text-xl md:text-2xl leading-relaxed text-gray-100 mb-6 max-w-3xl">
-                                <p>To encounter the unknown is to learn a new way of seeing.<br>As language shifts, so does our understanding of time, connection, and the meaning of our own lives.</p>
-                            </div>
-                            <div class="w-full max-w-3xl aspect-video rounded-xl overflow-hidden shadow-2xl">
-                                <img src="about-img-3.webp" alt="About Image 3" class="w-full h-full object-cover bg-gray-800">
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide flex flex-col justify-start items-center">
-                            <div class="text-xl md:text-2xl leading-relaxed text-gray-100 mb-6 max-w-3xl">
-                                <p>The further we travel into space, the more we are confronted with distance—<br>not only between worlds, but between people.<br>In the silence of the cosmos, the search turns inward.</p>
-                            </div>
-                            <div class="w-full max-w-3xl aspect-video rounded-xl overflow-hidden shadow-2xl">
-                                <img src="about-img-4.webp" alt="About Image 4" class="w-full h-full object-cover bg-gray-800">
+                        <div class="swiper-slide px-4">
+                            <div class="flex flex-col md:flex-row items-center justify-center gap-10 max-w-6xl w-full">
+                                <div class="text-left md:w-1/2 space-y-4">
+                                    <p class="text-xl md:text-2xl leading-relaxed text-gray-100">
+                                        We begin with questions, signals, and the hope that the universe can be understood.<br>
+                                        Between science and belief, the search becomes not only about discovery, but about what we choose to trust.
+                                    </p>
+                                </div>
+                                <div class="md:w-1/2 w-full aspect-video rounded-xl overflow-hidden shadow-2xl border border-zinc-800">
+                                    <img src="about-img-2.webp" alt="About Image 2" class="w-full h-full object-cover bg-gray-800">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="swiper-slide flex flex-col justify-start items-center">
-                            <div class="text-xl md:text-2xl leading-relaxed text-gray-100 mb-6 max-w-3xl">
-                                <p>At the edge of survival, the universe becomes a question of meaning.<br>Beyond science and distance, it is human connection—memory, love—that gives the journey its purpose.</p>
+                        <div class="swiper-slide px-4">
+                            <div class="flex flex-col md:flex-row items-center justify-center gap-10 max-w-6xl w-full">
+                                <div class="text-left md:w-1/2 space-y-4">
+                                    <p class="text-xl md:text-2xl leading-relaxed text-gray-100">
+                                        To encounter the unknown is to learn a new way of seeing.<br>
+                                        As language shifts, so does our understanding of time, connection, and the meaning of our own lives.
+                                    </p>
+                                </div>
+                                <div class="md:w-1/2 w-full aspect-video rounded-xl overflow-hidden shadow-2xl border border-zinc-800">
+                                    <img src="about-img-3.webp" alt="About Image 3" class="w-full h-full object-cover bg-gray-800">
+                                </div>
                             </div>
-                            <div class="w-full max-w-3xl aspect-video rounded-xl overflow-hidden shadow-2xl">
-                                <img src="about-img-5.webp" alt="About Image 5" class="w-full h-full object-cover bg-gray-800">
+                        </div>
+
+                        <div class="swiper-slide px-4">
+                            <div class="flex flex-col md:flex-row items-center justify-center gap-10 max-w-6xl w-full">
+                                <div class="text-left md:w-1/2 space-y-4">
+                                    <p class="text-xl md:text-2xl leading-relaxed text-gray-100">
+                                        The further we travel into space, the more we are confronted with distance—<br>
+                                        not only between worlds, but between people.<br>
+                                        In the silence of the cosmos, the search turns inward.
+                                    </p>
+                                </div>
+                                <div class="md:w-1/2 w-full aspect-video rounded-xl overflow-hidden shadow-2xl border border-zinc-800">
+                                    <img src="about-img-4.webp" alt="About Image 4" class="w-full h-full object-cover bg-gray-800">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide px-4">
+                            <div class="flex flex-col md:flex-row items-center justify-center gap-10 max-w-6xl w-full">
+                                <div class="text-left md:w-1/2 space-y-4">
+                                    <p class="text-xl md:text-2xl leading-relaxed text-gray-100">
+                                        At the edge of survival, the universe becomes a question of meaning.<br>
+                                        Beyond science and distance, it is human connection—memory, love—that gives the journey its purpose.
+                                    </p>
+                                </div>
+                                <div class="md:w-1/2 w-full aspect-video rounded-xl overflow-hidden shadow-2xl border border-zinc-800">
+                                    <img src="about-img-5.webp" alt="About Image 5" class="w-full h-full object-cover bg-gray-800">
+                                </div>
                             </div>
                         </div>
 
@@ -171,7 +205,6 @@
         <section id="trailer" class="py-20">
             <div class="max-w-4xl mx-auto px-4">
                 <h2 class="text-4xl font-bold mb-10 text-center border-b border-gray-800 pb-4" style="color: var(--trailer-title-color);">Trailer</h2>
-        
                 <div class="aspect-video rounded-xl overflow-hidden shadow-2xl bg-black">
                     <video 
                         controls 
@@ -217,7 +250,7 @@
                             </div>
                             <h3 class="text-2xl font-bold mb-1">Ad Astra (2019)</h3>
                             <p class="text-[#FFC10B] text-sm mb-3">Dir. James Gray</p>
-                            <p class="text-gray-300 text-sm leading-relaxed">An astronaut travels across the solar system in search of his missing father, whose work may be linked to a series of unexplained cosmic events[cite: 37]. The journey takes him further from Earth, but also deeper into his own emotional isolation. As the distance from home grows, the film reflects on connection, absence, and the human need for meaning beyond the vastness of space.</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">An astronaut travels across the solar system in search of his missing father, whose work may be linked to a series of unexplained cosmic events. The journey takes him further from Earth, but also deeper into his own emotional isolation. As the distance from home grows, the film reflects on connection, absence, and the human need for meaning beyond the vastness of space.</p>
                         </div>
                         
                         <div class="swiper-slide group cursor-grab active:cursor-grabbing">
@@ -262,7 +295,7 @@
                             </div>
                             <h3 class="text-2xl font-bold mb-1">Ad Astra (2019)</h3>
                             <p class="text-[#FFC10B] text-sm mb-3">Dir. James Gray</p>
-                            <p class="text-gray-300 text-sm leading-relaxed">An astronaut travels across the solar system in search of his missing father, whose work may be linked to a series of unexplained cosmic events[cite: 37]. The journey takes him further from Earth, but also deeper into his own emotional isolation. As the distance from home grows, the film reflects on connection, absence, and the human need for meaning beyond the vastness of space.</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">An astronaut travels across the solar system in search of his missing father, whose work may be linked to a series of unexplained cosmic events. The journey takes him further from Earth, but also deeper into his own emotional isolation. As the distance from home grows, the film reflects on connection, absence, and the human need for meaning beyond the vastness of space.</p>
                         </div>
                         
                         <div class="swiper-slide group cursor-grab active:cursor-grabbing">
@@ -296,7 +329,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // 1. 原有的 Selections 选片左右封面流轮播图 (保持不变)
+        // 1. 原有的 Selections 选片左右封面流轮播图
         var swiper = new Swiper(".mySwiper", {
             effect: "coverflow",   
             grabCursor: true,      
